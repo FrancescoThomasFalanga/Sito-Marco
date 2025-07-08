@@ -20,26 +20,3 @@ const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
-
-
-// Prende l'ultima parte del path (es. "profumi", "index.html", "")
-let currentPath = window.location.pathname;
-if (currentPath === "/" || currentPath === "") {
-  currentPath = "index.html";
-} else {
-  currentPath = currentPath.split("/").pop();
-  if (currentPath === "") currentPath = "index.html";
-  if (!currentPath.endsWith(".html")) currentPath += ".html";
-}
-
-// Seleziona tutti i link
-const links = document.querySelectorAll('.nav-links a');
-
-links.forEach(link => {
-  const href = link.getAttribute("href");
-
-  // Se il link combacia con la pagina corrente
-  if (href === currentPath) {
-    link.classList.add("active");
-  }
-});
