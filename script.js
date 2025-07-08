@@ -22,18 +22,24 @@ hamburger.addEventListener('click', () => {
 });
 
 
+// Prende l'ultima parte del path (es. "profumi", "index.html", "")
 let currentPath = window.location.pathname;
-if (currentPath.endsWith("/")) {
-  currentPath += "index.html";
-} else if (!currentPath.endsWith(".html")) {
-  currentPath += ".html";
+if (currentPath === "/" || currentPath === "") {
+  currentPath = "index.html";
+} else {
+  currentPath = currentPath.split("/").pop();
+  if (currentPath === "") currentPath = "index.html";
+  if (!currentPath.endsWith(".html")) currentPath += ".html";
 }
-currentPath = currentPath.split("/").pop();
 
+// Seleziona tutti i link
 const links = document.querySelectorAll('.nav-links a');
 
 links.forEach(link => {
-  if (link.getAttribute("href") === currentPath || (currentPath === "" && link.getAttribute("href") === "index.html")) {
+  const href = link.getAttribute("href");
+
+  // Se il link combacia con la pagina corrente
+  if (href === currentPath) {
     link.classList.add("active");
   }
 });
