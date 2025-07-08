@@ -229,3 +229,14 @@ main {
   }
 }
 
+.info-banner {
+  background-color: #cacaca79; /* un beige chiaro, personalizzabile */
+  text-align: center;
+  padding: 20px;
+  margin-top: 80px; /* per non stare attaccato alla navbar fissa */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
