@@ -22,7 +22,14 @@ hamburger.addEventListener('click', () => {
 });
 
 
-const currentPath = window.location.pathname.split("/").pop(); // es: "profumi.html"
+let currentPath = window.location.pathname;
+if (currentPath.endsWith("/")) {
+  currentPath += "index.html";
+} else if (!currentPath.endsWith(".html")) {
+  currentPath += ".html";
+}
+currentPath = currentPath.split("/").pop();
+
 const links = document.querySelectorAll('.nav-links a');
 
 links.forEach(link => {
