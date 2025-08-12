@@ -5,6 +5,13 @@ body {
   background-color: #e0e0e0;
 }
 
+.video-section video {
+  max-height: 600px;
+  width: 100%;
+  object-fit: cover; /* per adattare il video senza deformarlo */
+  display: block;
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -217,7 +224,7 @@ main {
 
 @media (max-width: 1024px) {
   .card {
-    flex: 1 1 calc(50% - 20px); /* 2 per riga */
+    flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
   }
 }
@@ -230,13 +237,131 @@ main {
 }
 
 .info-banner {
-  background-color: #cacaca79; /* un beige chiaro, personalizzabile */
+  background-color: #cacaca79;
   text-align: center;
   padding: 20px;
-  margin-top: 80px; /* per non stare attaccato alla navbar fissa */
+  margin-top: 40px;
   font-size: 1.1rem;
   font-weight: 500;
   color: #444;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+}
+
+
+
+/* CATALOGHI */
+.colonna.dettagli {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contenitore principale con griglia */
+.catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 50px;
+    margin: 30px;
+}
+
+/* Ogni singolo catalogo */
+.catalogo {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Colonna immagine/carousel */
+.colonna.modello {
+    flex: 1;
+    display: flex;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.carousel-btn.prev { left: 5px; }
+.carousel-btn.next { right: 5px; }
+
+/* Colonna dettagli */
+.colonna.dettagli {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+/* Tabelle */
+.tab-info, .tab-colori {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tab-info th, .tab-info td,
+.tab-colori th, .tab-colori td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.tab-info th, .tab-colori th {
+    background-color: #f2b400;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .catalogo-container {
+        grid-template-columns: 1fr; /* una per riga */
+    }
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+    .catalogo {
+        flex-direction: column;
+    }
+    .colonna.modello {
+        height: auto;
+    }
+    .carousel {
+        height: auto;
+    }
+    .carousel-images img {
+        height: auto;
+    }
 }
